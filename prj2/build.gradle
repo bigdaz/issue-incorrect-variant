@@ -1,0 +1,12 @@
+import foopbuild.Deps
+
+plugins {
+    id('java-library')
+}
+
+Deps deps = Deps.withDependencyHandling(project)
+
+dependencies {
+    implementation(deps.caffeine)
+    implementation(deps.commons_io)
+}

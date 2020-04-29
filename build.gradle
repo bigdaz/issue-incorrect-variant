@@ -1,0 +1,9 @@
+plugins {
+    id('java-base')
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
