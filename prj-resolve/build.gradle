@@ -7,7 +7,7 @@ configurations.conf.resolutionStrategy.dependencySubstitution {
 }
 
 dependencies {
-    conf project(":prj1")
+    conf project(":prj-lib")
 }
 
 tasks.register("aggregate") {

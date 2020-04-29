@@ -23,6 +23,5 @@ buildCache { BuildCacheConfiguration bcc ->
 //    }
 }
 
-include("prj1")
-
-include("aggregator")
+include("prj-lib")
+include("prj-resolve")
