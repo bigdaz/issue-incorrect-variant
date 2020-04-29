@@ -6,28 +6,13 @@ configurations {
 }
 
 Deps deps = Deps.withDependencyHandling(project)
-
 deps.dependencyHandlingForProjectConfiguration(project, "runtime")
 
-def serverRuntimeProjects = [rootProject.project(":prj1")]
-
 dependencies {
-    serverRuntimeProjects.each({ Project prj ->
-        runtime(project(path: prj.path, configuration: "runtimeElements"))
-    })
+    runtime(project(path: ":prj1", configuration: "runtimeElements"))
 }
-
-Set<Project> depProjects = serverRuntimeProjects.collect({ Project p ->
-    project.evaluationDependsOn(p.path)
-})
 
 TaskProvider task = tasks.register("generateRuntimeClasspath", GenerateRuntimeClasspathTask) { GenerateRuntimeClasspathTask t ->
     t.runtimeClasspathFile = new File(rootProject.buildDir, "runtime-classpath.txt")
     t.configuration = t.project.configurations.runtime
-}
-
-depProjects.each { Project p ->
-    p.tasks.named("jar") { Jar t ->
-        t.finalizedBy(task)
-    }
 }
