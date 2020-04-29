@@ -4,8 +4,6 @@ plugins {
     id('java-library')
 }
 
-Deps deps = Deps.withDependencyHandling(project)
-
 dependencies {
     implementation "com.github.jnr:jnr-ffi:2.1.10"
 }

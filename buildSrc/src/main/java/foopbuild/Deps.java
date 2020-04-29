@@ -39,29 +39,6 @@ public class Deps
         return serverDeps;
     }
 
-    // Few dependencies (doesn't matter which ones)
-    public final Map<String, String> caffeine = dep("com.github.ben-manes.caffeine", "caffeine", "2.8.1");
-    public final Map<String, String> commons_io = dep("commons-io", "commons-io", "2.6");
-    public final Map<String, String> ossJavaDriver_core = dep("com.datastax.oss", "java-driver-core", "4.5.0");
-
-    public static Map<String, String> dep(String group, String name, String version)
-    {
-        return dep(group, name, version, null, null);
-    }
-
-    public static Map<String, String> dep(String group, String name, String version, String classifier, String ext)
-    {
-        Map<String, String> m = new HashMap<>(4, 1f);
-        m.put("group", group);
-        m.put("name", name);
-        if (version != null)
-            m.put("version", version);
-        if (classifier != null)
-            m.put("classifier", classifier);
-        if (ext != null)
-            m.put("ext", ext);
-        return m;
-    }
 
     private void substituteDependenciesWithPatternMatching(Configuration c)
     {
@@ -111,13 +88,5 @@ public class Deps
     public void dependencyHandlingForProject(Project p)
     {
         p.getConfigurations().configureEach(configurationConfigureAction);
-    }
-
-    /**
-     * Apply dependency handling to a single configuration of a project.
-     */
-    public void dependencyHandlingForProjectConfiguration(Project p, String configuration)
-    {
-        p.getConfigurations().named(configuration, configurationConfigureAction);
     }
 }
