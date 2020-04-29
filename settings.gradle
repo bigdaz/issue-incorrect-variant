@@ -1,27 +1,2 @@
-plugins {
-    id("com.gradle.enterprise").version("3.2.1")
-}
-
-gradleEnterprise {
-    server = "http://localhost"
-    buildScan {
-        publishAlways()
-        captureTaskInputFiles = true
-    }
-    allowUntrustedServer = true
-}
-
-buildCache { BuildCacheConfiguration bcc ->
-    bcc.local {
-        enabled = true
-    }
-//    bcc.remote(HttpBuildCache) { HttpBuildCache h ->
-//        h.enabled = true
-//        h.allowUntrustedServer = true
-//        h.url = "https://YOUR-GRADLE-CACHE-SERVER"
-//        h.push = true
-//    }
-}
-
 include("prj-lib")
 include("prj-resolve")
