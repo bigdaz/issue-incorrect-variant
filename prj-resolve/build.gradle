@@ -2,6 +2,7 @@ configurations {
     conf
 }
 
+// Force configurations.conf.resolutionStrategy.assumeFluidDependencies()
 configurations.conf.resolutionStrategy.dependencySubstitution {
     all {}
 }
