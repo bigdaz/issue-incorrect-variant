@@ -1,12 +1,7 @@
-Reproducer for the issue that just the presence of a `org.gradle.api.artifacts.DependencySubstitutions.all()`
-causes dependencies to be resolved with the `default` variant instead of e.g. `compile` or `runtime` variants.
+This is a reproducer project for https://github.com/gradle/gradle/issues/12951.
 
-There are 3 modules in this project:
-* `prj1` + `prj2` - two dummies with a single class in each
-* `aggregator` collects the runtime dependencies from the other two projects to get a machine dependendent
-  classpath over both modules.
+To demonstrate the issue:
+- Run `./gradlew :prj-lib:dependencyInsight --configuration compileClasspath --dependency jffi`. You will see the "compile" variant selected
+- Run `./gradlew :prj-lib:dependencyInsight --configuration compileClasspath --dependency jffi aggregate`. You will see the "default" variant selected, due simply to the presence of the `aggregate` task.
 
-Note:
-"Dependency management" must be applied to all configurations for prj1+prj2 and the "runtime" configuration
-of the aggregator project. Otherwise, in a much bigger project with way more dependencies, transient dependencies
-could sneak in with the wrong version - so dep-handling is applied to :aggregator:runtime
+This issue can also be demonstrated without the dependency substitution rule, by adding `-Dorg.gradle.resolution.assumeFluidDependencies=true` to the CLI.
