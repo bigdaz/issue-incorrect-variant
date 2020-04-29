@@ -4,4 +4,4 @@ To demonstrate the issue:
 - Run `./gradlew :prj-lib:dependencyInsight --configuration compileClasspath --dependency jffi`. You will see the "compile" variant selected
 - Run `./gradlew :prj-lib:dependencyInsight --configuration compileClasspath --dependency jffi aggregate`. You will see the "default" variant selected, due simply to the presence of the `aggregate` task.
 
-This issue can also be demonstrated without the dependency substitution rule, by adding `-Dorg.gradle.resolution.assumeFluidDependencies=true` to the CLI.
+This issue can also be demonstrated without the [dependency substitution rule](https://github.com/bigdaz/issue-incorrect-variant/blob/master/prj-resolve/build.gradle#L5-L8), by adding `-Dorg.gradle.resolution.assumeFluidDependencies=true` to the CLI.
