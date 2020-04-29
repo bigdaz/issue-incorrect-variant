@@ -1,5 +1,3 @@
-import foopbuild.Deps
-
 plugins {
     id('java-library')
 }

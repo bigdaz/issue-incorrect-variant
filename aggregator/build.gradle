@@ -1,10 +1,12 @@
-import foopbuild.Deps
-
 configurations {
     runtime
 }
 
-Deps deps = Deps.withDependencyHandling(project)
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        all {}
+    }
+}
 
 dependencies {
     runtime(project(path: ":prj1", configuration: "runtimeElements"))
