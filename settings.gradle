@@ -24,6 +24,5 @@ buildCache { BuildCacheConfiguration bcc ->
 }
 
 include("prj1")
-include("prj2")
 
 include("aggregator")

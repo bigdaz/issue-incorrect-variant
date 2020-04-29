@@ -9,7 +9,7 @@ Deps deps = Deps.withDependencyHandling(project)
 
 deps.dependencyHandlingForProjectConfiguration(project, "runtime")
 
-def serverRuntimeProjects = [rootProject.project(":prj1"), rootProject.project(":prj2")]
+def serverRuntimeProjects = [rootProject.project(":prj1")]
 
 dependencies {
     serverRuntimeProjects.each({ Project prj ->
