@@ -1,17 +1,15 @@
 configurations {
-    runtime
+    conf
 }
 
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        all {}
-    }
+configurations.conf.resolutionStrategy.dependencySubstitution {
+    all {}
 }
 
 dependencies {
-    runtime(project(path: ":prj1", configuration: "runtimeElements"))
+    conf project(":prj1")
 }
 
-tasks.register("useRuntime") {
-    inputs.files(configurations.runtime)
+tasks.register("aggregate") {
+    inputs.files(configurations.conf)
 }
