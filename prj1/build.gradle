@@ -9,3 +9,9 @@ Deps deps = Deps.withDependencyHandling(project)
 dependencies {
     implementation(deps.ossJavaDriver_core)
 }
+
+task printCompileClasspath {
+    doLast {
+        configurations.compileClasspath.each { println it }
+    }
+}
